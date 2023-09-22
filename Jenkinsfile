@@ -25,10 +25,7 @@ pipeline {
                 '''
 
                 // Install dependencies and run migrations
-                sh '''
-                    pip install -r requirements.txt
-                    python3 manage.py migrate
-                '''
+                sh 'pip install -r requirements.txt'
 
                 // Run any additional build steps here, such as collecting static files
                 sh 'python3 manage.py collectstatic --noinput'
