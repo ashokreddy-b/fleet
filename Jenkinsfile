@@ -29,7 +29,7 @@ pipeline {
                 sh 'pip install django'
                 sh'pip install psycopg2-binary'
                 sh 'export DJANGO_SETTINGS_MODULE=mysite.settings'
-                sh 'python manage.py migrate'
+                sh 'python3 manage.py migrate'
 
                 // Run any additional build steps here, such as collecting static files
               //  sh 'python3 manage.py collectstatic'
