@@ -49,9 +49,10 @@ pipeline {
         {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Docker', passwordVariable: 'pwd', usernameVariable: 'username')]) {
-                    sh "docker login -u ${env.username} -p ${env.pwd}"
-                    sh 'docker push "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"'
+                    sh "sudo docker login -u ${env.username} -p ${env.pwd}"
+                    
                 }
+                sh 'docker push my-django-app:latest'
             }
         }
         stage('Deploy')
