@@ -18,10 +18,10 @@ pipeline {
         {
             steps
             {
-               sh 'python -m venv venv'
+               sh 'python3 -m venv venv'
                 sh 'source venv/bin/activate'
                 sh 'pip install -r requirements.txt'
-                sh 'python manage.py collectstatic --noinput'
+                sh 'python3 manage.py collectstatic --noinput'
                 sh 'deactivate'
             }
         }
