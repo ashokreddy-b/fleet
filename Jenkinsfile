@@ -26,6 +26,8 @@ pipeline {
 
                 // Install dependencies and run migrations
                 sh 'pip install -r requirements.txt'
+                sh 'pip install django'
+                sh'pip install psycopg2-binary'
 
                 // Run any additional build steps here, such as collecting static files
                 sh 'python3 manage.py collectstatic --noinput'
