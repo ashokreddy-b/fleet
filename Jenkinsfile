@@ -24,7 +24,7 @@ pipeline {
                 sh 'pip install django'
                 sh 'pip install -r requirements.txt'
                 sh 'python3 manage.py test'
-                sh 'python3 manage.py collectstatic --noinput'
+                sh 'python manage.py collectstatic --noinput'
                 sh 'deactivate'
             }
         }
