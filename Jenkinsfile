@@ -18,14 +18,20 @@ pipeline {
         {
             steps
             {
-               sh 'python3 -m venv venv'
-                sh 'chmod +x /var/lib/jenkins/workspace/DjangoApplicationPipeline/venv/bin/activate'
-                sh 'venv/bin/activate'
-                sh 'pip install django'
-                sh 'pip install -r requirements.txt'
-                sh 'python3 manage.py test'
+                sh '''
+                    python -m venv venv
+                    source venv/bin/activate
+                '''
+
+                // Install dependencies and run migrations
+                sh '''
+                    pip install -r requirements.txt
+                    python manage.py migrate
+                '''
+
+                // Run any additional build steps here, such as collecting static files
                 sh 'python manage.py collectstatic --noinput'
-                sh 'deactivate'
+              
             }
         }
         stage('Image Create')
