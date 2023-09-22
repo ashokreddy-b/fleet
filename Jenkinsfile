@@ -30,6 +30,7 @@ pipeline {
                 sh'pip install psycopg2-binary'
                 sh 'export DJANGO_SETTINGS_MODULE=mysite.settings'
                 sh 'python3 manage.py makemigrations'
+                sh 'python3 manage.py reset_db'
                 sh 'python3 manage.py migrate'
 
                 // Run any additional build steps here, such as collecting static files
