@@ -52,13 +52,13 @@ pipeline {
                     sh "sudo docker login -u ${env.username} -p ${env.pwd}"
                     
                 }
-                sh 'docker push my-django-app:latest'
+                sh 'sudo docker push my-django-app:latest'
             }
         }
         stage('Deploy')
         {
             steps{
-               sh  'docker run -d -p 8000:8000 "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"'
+               sh  'sudo docker run -d -p 8000:8000 my-django-app:latest'
             }
         }
     }
