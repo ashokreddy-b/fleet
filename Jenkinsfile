@@ -42,9 +42,7 @@ pipeline {
         stage('Image Create')
         {
             steps{
-                script {
-                    docker.build("${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}")
-                }
+                sh 'sudo docker build -t my-django-app:latest .'
             }
         }
         stage('push Image to docker hub')
