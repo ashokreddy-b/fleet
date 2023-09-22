@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'fleet_dev',
         'USER': 'fleet_user',
         'PASSWORD': 'fleet_user',
-        'HOST': '3.108.51.182',
+        'HOST': '43.204.135.69',
         'PORT': '5432',
         'OPTIONS': {
             'options': '-c search_path=fleet',
