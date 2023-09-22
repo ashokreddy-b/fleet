@@ -19,7 +19,7 @@ pipeline {
             steps
             {
                 sh 'pip install -r requirements.txt'
-                sh 'python manage.py collectstatic --noinput'
+                sh 'python3 manage.py collectstatic --noinput'
             }
         }
         stage('Image Create')
