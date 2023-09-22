@@ -19,6 +19,7 @@ pipeline {
             steps
             {
                sh 'python3 -m venv venv'
+                sh 'chmod +x /var/lib/jenkins/workspace/DjangoApplicationPipeline/venv/bin/activate'
                 sh 'venv/bin/activate'
                 sh 'pip install -r requirements.txt'
                 sh 'python3 manage.py collectstatic --noinput'
