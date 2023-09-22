@@ -31,7 +31,7 @@ pipeline {
                 sh 'export DJANGO_SETTINGS_MODULE=mysite.settings'
 
                 // Run any additional build steps here, such as collecting static files
-                sh 'python3 manage.py collectstatic --noinput'
+                sh 'python3 manage.py collectstatic'
               
             }
         }
