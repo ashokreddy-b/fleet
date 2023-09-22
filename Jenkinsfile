@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-    docker { image 'python:3.11' }
-  }
+    agent any
 
     environment {
         DOCKER_IMAGE_NAME = 'my-django-app'
