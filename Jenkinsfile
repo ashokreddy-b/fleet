@@ -19,18 +19,18 @@ pipeline {
             steps
             {
                 sh '''
-                    python -m venv venv
+                    python3 -m venv venv
                     source venv/bin/activate
                 '''
 
                 // Install dependencies and run migrations
                 sh '''
                     pip install -r requirements.txt
-                    python manage.py migrate
+                    python3 manage.py migrate
                 '''
 
                 // Run any additional build steps here, such as collecting static files
-                sh 'python manage.py collectstatic --noinput'
+                sh 'python3 manage.py collectstatic --noinput'
               
             }
         }
