@@ -42,7 +42,7 @@ pipeline {
         stage('Image Create')
         {
             steps{
-                sh 'sudo docker build -t my-django-app:latest .'
+                sh 'sudo docker build -t bapathuashokreddy/my-django-app:latest .'
             }
         }
         stage('push Image to docker hub')
@@ -50,7 +50,7 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Docker', passwordVariable: 'pwd', usernameVariable: 'username')]) {
                     sh "sudo docker login -u ${env.username} -p ${env.pwd}"
-                    sh 'sudo docker push my-django-app:latest'
+                    sh 'sudo docker push bapathuashokreddy/my-django-app:latest'
                 }
                 
             }
@@ -58,7 +58,7 @@ pipeline {
         stage('Deploy')
         {
             steps{
-               sh  'sudo docker run -d -p 8000:8000 my-django-app:latest'
+               sh  'sudo docker run -d -p 8000:8000 bapathuashokreddy/my-django-app:latest'
             }
         }
     }
