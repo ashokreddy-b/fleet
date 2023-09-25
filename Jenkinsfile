@@ -11,7 +11,7 @@ pipeline {
         {
             steps{
                 git branch: 'main', url: 'https://github.com/ashokreddy-b/fleet.git'
-                sh 'echo "Checkout successfull"'
+                sh 'echo "Checkout successfully"'
             }
             
         }
@@ -37,6 +37,7 @@ pipeline {
                 // Run any additional build steps here, such as collecting static files
               //  sh 'python3 manage.py collectstatic'
               //  sh 'deactivate'
+                 sh 'echo "Build successfully"'
               
             }
         }
