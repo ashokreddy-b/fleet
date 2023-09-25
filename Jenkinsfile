@@ -11,6 +11,7 @@ pipeline {
         {
             steps{
                 git branch: 'main', url: 'https://github.com/ashokreddy-b/fleet.git'
+                sh 'echo "Checkout successfull"'
             }
             
         }
