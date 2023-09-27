@@ -24,16 +24,18 @@ pipeline {
                     def pythonVersion = '3'  // Modify the Python version as needed
                     def virtualenvName = 'myenv'  // Modify the virtual environment name as needed
 
-                    // Create a virtual environment and activate it
-                    sh "python${pythonVersion} -m venv ${virtualenvName}"
-                    sh "source ${virtualenvName}/bin/activate"
+                    def venvPath = "${WORKSPACE}/${virtualenvName}"
 
-                    // Install dependencies (e.g., Django, requirements.txt)
-                    sh "pip install -r requirements.txt"
+            // Create a virtual environment
+            sh "python${pythonVersion} -m venv ${venvPath}"
 
-                    // Run Django migrations and collect static files
-                    sh "python manage.py migrate"
-                    sh "python manage.py collectstatic --noinput"
+            // Activate the virtual environment and install dependencies
+            sh "chmod +x ${venvPath}/bin/activate"
+            sh "source ${venvPath}/bin/activate && pip install -r requirements.txt"
+
+            // Run Django migrations and collect static files
+            sh "source ${venvPath}/bin/activate && python manage.py migrate"
+            sh "source ${venvPath}/bin/activate && python manage.py collectstatic --noinput"
                 }
                
               
