@@ -31,11 +31,11 @@ pipeline {
 
             // Activate the virtual environment and install dependencies
             sh "chmod +x ${venvPath}/bin/activate"
-            sh "source ${venvPath}/bin/activate && pip install -r requirements.txt"
+            sh "${venvPath}/bin/activate && pip install -r requirements.txt"
 
             // Run Django migrations and collect static files
-            sh "source ${venvPath}/bin/activate && python manage.py migrate"
-            sh "source ${venvPath}/bin/activate && python manage.py collectstatic --noinput"
+            sh "${venvPath}/bin/activate && python manage.py migrate"
+            sh "${venvPath}/bin/activate && python manage.py collectstatic --noinput"
                 }
                
               
