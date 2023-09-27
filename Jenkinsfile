@@ -21,7 +21,7 @@ pipeline {
             {
 
                 script {
-                    def pythonVersion = '3.8'  // Modify the Python version as needed
+                    def pythonVersion = '3'  // Modify the Python version as needed
                     def virtualenvName = 'myenv'  // Modify the virtual environment name as needed
 
                     // Create a virtual environment and activate it
