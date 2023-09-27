@@ -19,25 +19,23 @@ pipeline {
         {
             steps
             {
-                sh '''
-                    python3 -m venv venv
-                    chmod +x venv/bin/activate 
-                    ./venv/bin/activate
-                '''
 
-                // Install dependencies and run migrations
-                sh 'pip install -r requirements.txt'
-                sh 'pip install django'
-                sh'pip install psycopg2-binary'
-                sh 'export DJANGO_SETTINGS_MODULE=mysite.settings'
-                sh 'python3 manage.py makemigrations'
-              //  sh 'python3 manage.py reset_db'
-                //sh 'python3 manage.py migrate'
+                script {
+                    def pythonVersion = '3.8'  // Modify the Python version as needed
+                    def virtualenvName = 'myenv'  // Modify the virtual environment name as needed
 
-                // Run any additional build steps here, such as collecting static files
-              //  sh 'python3 manage.py collectstatic'
-              //  sh 'deactivate'
-                 sh 'echo "Build successfully"'
+                    // Create a virtual environment and activate it
+                    sh "python${pythonVersion} -m venv ${virtualenvName}"
+                    sh "source ${virtualenvName}/bin/activate"
+
+                    // Install dependencies (e.g., Django, requirements.txt)
+                    sh "pip install -r requirements.txt"
+
+                    // Run Django migrations and collect static files
+                    sh "python manage.py migrate"
+                    sh "python manage.py collectstatic --noinput"
+                }
+               
               
             }
         }
