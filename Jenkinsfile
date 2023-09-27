@@ -34,7 +34,7 @@ pipeline {
             sh "${venvPath}/bin/activate && pip install -r requirements.txt"
 
             // Run Django migrations and collect static files
-            sh "${venvPath}/bin/activate && python3 manage.py migrate"
+           // sh "${venvPath}/bin/activate && python3 manage.py migrate"
             sh "${venvPath}/bin/activate && python3 manage.py collectstatic --noinput"
                 }
                
