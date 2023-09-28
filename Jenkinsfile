@@ -32,7 +32,7 @@ pipeline {
             // Activate the virtual environment and install dependencies
             sh "chmod +x ${venvPath}/bin/activate"
             sh "${venvPath}/bin/activate"
-            sh 'sudo apt install libpq-dev python3-dev'
+            sh 'sudo apt install libpq-dev'
             sh 'pip3 install psycopg2-binary'
                     sh 'pip install -r requirements.txt'
             // Run Django collect static files
