@@ -33,6 +33,7 @@ pipeline {
             sh "chmod +x ${venvPath}/bin/activate"
             sh "${venvPath}/bin/activate"
            // sh 'sudo apt install libpq-dev'
+                   sh'pip install psycopg2-binary'
             sh 'pip install -r requirements.txt'
             // Run Django collect static files
             sh "${venvPath}/bin/activate && python3 manage.py collectstatic --noinput"
