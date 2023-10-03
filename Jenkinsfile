@@ -65,4 +65,23 @@ pipeline {
             }
         }
     }
+     post {
+        success {
+            emailext (
+                subject: "Build Status: fleet ${currentBuild.currentResult}",
+                body: "The build status is: ${currentBuild.currentResult}",
+                recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+                to: "bapathuashokreddy@gmail.com" 
+            )
+        }
+         failure {
+            // This stage will always run, regardless of the build result
+            emailext (
+                subject: "Build Status: ${currentBuild.currentResult}",
+                body: "The build status is: ${currentBuild.currentResult}",
+                recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+                to: "bapathuashokreddy@gmail.com"  // Replace with the recipient's email address
+            )
+        }
+    }
 }
