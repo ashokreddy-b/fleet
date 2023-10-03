@@ -7,7 +7,7 @@ pipeline {
     }
     
     stages{
-        stage('Checkout')
+        stage('Checkout from code from github')
         {
             steps{
                 git branch: 'main', url: 'https://github.com/ashokreddy-b/fleet.git'
@@ -15,7 +15,7 @@ pipeline {
             }
             
         }
-        stage('Build')
+        stage('Build the Application')
         {
             steps
             {
@@ -42,13 +42,13 @@ pipeline {
               
             }
         }
-        stage('Image Create')
+        stage('Create Docker Image')
         {
             steps{
                 sh 'sudo docker build -t bapathuashokreddy/my-django-app:latest .'
             }
         }
-        stage('push Image to docker hub')
+        stage('Docker hub login and push Image to docker hub')
         {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Docker', passwordVariable: 'pwd', usernameVariable: 'username')]) {
@@ -58,7 +58,7 @@ pipeline {
                 
             }
         }
-        stage('Deploy')
+        stage('Run the container')
         {
             steps{
                sh  'sudo docker run -d -p 8000:8000 bapathuashokreddy/my-django-app:latest'
