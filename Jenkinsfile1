@@ -1,0 +1,10 @@
+node {
+  stage('SCM') {
+git branch: 'main', url: 'https://github.com/ashokreddy-b/fleet.git'
+  }
+  stage('SonarQube Analysis') {
+   def scannerHome = tool 'SonarScanner for MSBuild'
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
