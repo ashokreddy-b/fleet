@@ -8,3 +8,4 @@ git branch: 'main', url: 'https://github.com/ashokreddy-b/fleet.git'
       sh "${scannerHome}/bin/sonar-scanner"
     }
   }
+}
